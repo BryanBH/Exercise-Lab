@@ -1,0 +1,22 @@
+.exercise-images-before {
+  z-index: 2;
+  animation: imageSlideOut 3s ease-in-out infinite;
+}
+
+.exercise-images-after {
+  z-index: 1;
+}
+
+@keyframes imageSlideOut {
+  0% {
+    z-index: 2;
+  }
+
+  50% {
+    z-index: 1;
+  }
+
+  100% {
+    z-index: 2;
+  }
+}
