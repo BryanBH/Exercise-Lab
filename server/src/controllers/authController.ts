@@ -148,3 +148,11 @@ export const getSavedExercises = async (req: Request, res: Response) => {
     res.status(500).send({ message: error });
   }
 };
+
+export const deleteSavedExercise = async (req: Request, res: Response) => {
+  const { id } = req.body;
+  // remove requested exercise from the collection
+  const test = await savedExercise.findByIdAndDelete(id);
+
+  res.status(200).send({ message: 'Exercise was deleted succesfully!' });
+};

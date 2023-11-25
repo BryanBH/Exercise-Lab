@@ -5,9 +5,11 @@ import axios from 'axios';
 import { useGetAccessToken } from '../hooks';
 import Flash from './Flash';
 import { FlashMessageType } from '../types';
+import { useNavigate } from 'react-router-dom';
 
 const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
   const token = useGetAccessToken();
+  const navigate = useNavigate();
   const [flashToggle, setFlashToggle] = useState(false);
   const [flashInformation, setflashInformation] = useState<FlashMessageType>({
     message: '',
@@ -15,7 +17,6 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
     sendTo: null,
   });
   const handleSaveExercise = async () => {
-    //TODO Implement api call for save exercise to DB
     if (token) {
       try {
         const { data } = await axios.post(
@@ -34,6 +35,8 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
         const { message } = error.response.data;
         setflashInformation({ type: 'error', message });
       }
+    } else {
+      navigate('/login');
     }
   };
   return (

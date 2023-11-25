@@ -6,6 +6,7 @@ import {
   getUserProfileDetails,
   saveExerciseToUser,
   getSavedExercises,
+  deleteSavedExercise,
 } from '../controllers/authController';
 import {
   verifyToken,
@@ -30,5 +31,7 @@ authRouter.route('/profile').get([verifyToken], getUserProfileDetails);
 authRouter.route('/saveExercise').post([verifyToken], saveExerciseToUser);
 
 authRouter.route('/getSavedExercises').get([verifyToken], getSavedExercises);
+
+authRouter.route('/deleteSavedExercise').post([verifyToken], deleteSavedExercise)
 
 export { authRouter };
