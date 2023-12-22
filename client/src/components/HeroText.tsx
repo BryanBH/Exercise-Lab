@@ -12,9 +12,6 @@ const HeroText: React.FC = () => {
           <button className='rounded-full p-3 text-white bg-[#52598F] cursor-pointer'>
             <Link to='/exercises'>Explore exercises</Link>
           </button>
-          <button className='rounded-full p-3 text-white bg-[#52598F] cursor-pointer'>
-            Calculate bmi
-          </button>
         </div>
       </div>
     </div>

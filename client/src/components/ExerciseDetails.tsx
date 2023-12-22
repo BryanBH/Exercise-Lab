@@ -17,6 +17,7 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
     sendTo: null,
   });
   const handleSaveExercise = async () => {
+    console.log(exercise._id);
     if (token) {
       try {
         const { data } = await axios.post(
@@ -31,6 +32,7 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
         setflashInformation({ type: 'success', message: data.message });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
+        console.log(error)
         setFlashToggle(true);
         const { message } = error.response.data;
         setflashInformation({ type: 'error', message });

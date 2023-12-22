@@ -8,6 +8,11 @@ import SignUp from './SignUp';
 import UserDetails from './UserDetails';
 import UserWorkouts from './UserWorkouts';
 import UserExercises from './UserExercises';
+import NewWorkoutCard from './NewWorkoutCard';
+import WorkoutExerciseItem from './WorkoutExerciseItem';
+import LoadingCard from './LoadingCard';
+import Pagination from './Pagination';
+import Flash from './Flash';
 
 export {
   Navbar,
@@ -20,4 +25,9 @@ export {
   UserDetails,
   UserWorkouts,
   UserExercises,
+  NewWorkoutCard,
+  WorkoutExerciseItem,
+  LoadingCard,
+  Pagination,
+  Flash,
 };

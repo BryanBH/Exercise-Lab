@@ -50,9 +50,30 @@ export interface savedExercises {
 export interface UserProfileInformation {
   username: string;
   email: string;
-  savedExercises: [savedExercises];
+  profileImage: {
+    url: string;
+    filename: string;
+  };
+  savedExercises: savedExercises[];
+  savedWorkouts: SavedWorkouts[];
+  _id: mongoose.ObjectId | string;
 }
 
+export interface WorkoutExercises {
+  name: string;
+  reps: number;
+  sets: number;
+  exerciseId: string;
+  _id: mongoose.ObjectId | string;
+}
+
+export interface SavedWorkouts {
+  userId: string;
+  workoutTitle: string;
+  workout: WorkoutExercises[];
+  _id: mongoose.ObjectId | string;
+}
+// ********** Utility Types **************
 export interface FlashMessageType {
   message: string;
   type: string;

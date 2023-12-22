@@ -1,3 +1,4 @@
 import useGetAccessToken from './useGetAccessToken';
+import { useGetUserSavedExercises } from './useGetUserSavedExercises';
 
-export { useGetAccessToken };
+export { useGetAccessToken, useGetUserSavedExercises };

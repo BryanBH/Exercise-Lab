@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import "dotenv/config"
 const app = express();
 const port = process.env.PORT || 4500;
 const dbURL = process.env.DB_URL || 'mongodb://localhost:27017/exercise-lab';

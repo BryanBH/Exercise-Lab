@@ -14,7 +14,7 @@ const PageWrapper: React.FC<Props> = ({ children }) => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return <div className='flex h-full flex-col'>{children}</div>;
+  return <div className='flex h-full flex-col relative'>{children}</div>;
 };
 
 export default PageWrapper;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { styles } from '../styles';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useGetAccessToken } from '../utils';
+import { useGetAccessToken } from '../hooks';
 import { navLinks } from '../data';
 import Cookies from 'js-cookie';
 

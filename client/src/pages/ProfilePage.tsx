@@ -8,7 +8,10 @@ const ProfilePage: React.FC = () => {
   const [user, setuser] = useState<UserProfileInformation>({
     username: '',
     email: '',
-    savedExercises: [{ _id: '', user: '', name: '', exerciseId: '' }],
+    savedExercises: [],
+    savedWorkouts: [],
+    _id: '',
+    profileImage: { url: '', filename: '' },
   });
   const token = useGetAccessToken('/login');
 
