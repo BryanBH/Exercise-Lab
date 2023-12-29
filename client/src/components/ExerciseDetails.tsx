@@ -32,7 +32,7 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
         setflashInformation({ type: 'success', message: data.message });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        console.log(error)
+        console.log(error);
         setFlashToggle(true);
         const { message } = error.response.data;
         setflashInformation({ type: 'error', message });
@@ -46,25 +46,27 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
       {flashToggle && (
         <Flash {...flashInformation} setToggle={setFlashToggle} />
       )}
-      <div className='h-full flex justify-center items-center flex-col md:flex-row m-3 mb-10'>
-        <div className='relative md:w-3/5 order-last md:order-first mb-3'>
-          <img
-            src={`${exercise.images[0]}`}
-            alt='exercise image 1'
-            className='exercise-images-before relative top-0 rounded-xl shadow-md'
-          />
-          <img
-            src={`${exercise.images[1]}`}
-            alt='exercise image 1'
-            className='exercise-images-after absolute top-0 rounded-xl shadow-md'
-          />
+      <div className='h-full flex justify-center items-center flex-col md:flex-row  my-10'>
+        <div className='relative md:w-3/5 order-last md:order-first mb-3 flex items-center justify-center'>
+          <div className='px-2'>
+            <img
+              src={`${exercise.images[0]}`}
+              alt='exercise image 1'
+              className='exercise-images-before relative top-0 rounded-xl shadow-md'
+            />
+            <img
+              src={`${exercise.images[1]}`}
+              alt='exercise image 1'
+              className='exercise-images-after absolute top-0 rounded-xl shadow-md'
+            />
+          </div>
         </div>
-        <div className='md:w-2/5 m-3 p-3'>
+        <div className='md:w-2/5 m-3 p-3 text-dark dark:text-light'>
           <h1 className='font-bold text-center text-3xl my-3'>
             {exercise.name}
           </h1>
-          <p className='text-xl mb-3 px-3'>{exercise.instructions}</p>
-          <ul className=' flex flex-col gap-2'>
+          <p className='text-xl mb-3 '>{exercise.instructions}</p>
+          <ul className='flex flex-col gap-2'>
             <li>
               <strong>Primary Muscle</strong>: {exercise.primaryMuscles}
             </li>

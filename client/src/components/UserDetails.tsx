@@ -11,8 +11,8 @@ const UserDetails: React.FC<UserProfileInformation> = ({
 }) => {
   return (
     <section className='w-full relative'>
-      <div className='profile-details flex flex-col lg:flex-row bg-[#F8F4F4] w-[90%] mx-auto rounded-lg shadow-2xl mt-5 pb-5'>
-        <div className='w-full lg:w-1/2 flex flex-col justify-center items-center mb-5'>
+      <div className='profile-details flex flex-col lg:flex-row bg-dark dark:bg-extraDark w-[90%] mx-auto rounded-lg shadow-2xl mt-5 pb-5'>
+        <div className='w-full lg:w-1/2 flex flex-col justify-center items-center mb-5 text-light'>
           <div className='relative'>
             {profileImage ? (
               <img
@@ -37,23 +37,15 @@ const UserDetails: React.FC<UserProfileInformation> = ({
           <h2 className='text-2xl'>{email}</h2>
         </div>
         <div className='w-full lg:w-1/2'>
-          <div className='w-full h-full grid grid-cols-1 md:grid-cols-2 place-items-center gap-10 py-5'>
-            <div className='bg-[#F8F4F4] h-[250px] w-[220px] py-5 flex flex-col justify-around items-center rounded-xl shadow-xl'>
+          <div className='w-full h-full grid grid-cols-1 md:grid-cols-2 place-items-center gap-10 py-5 text-light'>
+            <div className='bg-tertiary h-[250px] w-[220px] py-5 flex flex-col justify-around items-center rounded-xl shadow-xl'>
               <h3 className='text-2xl mt-5'>Exercises Saved</h3>
-              <p className='text-lg'>{savedExercises.length}</p>
+              <p className='text-xl'>{savedExercises.length}</p>
             </div>
-            <div className='bg-[#F8F4F4] h-[250px] w-[220px] py-5 flex flex-col justify-around items-center rounded-xl shadow-xl'>
+            <div className='bg-tertiary h-[250px] w-[220px] py-5 flex flex-col justify-around items-center rounded-xl shadow-xl'>
               <h3 className='text-2xl mt-5'>Workouts Saved</h3>
-              <p className='text-lg'>{savedWorkouts.length}</p>
+              <p className='text-xl'>{savedWorkouts.length}</p>
             </div>
-            {/* <div className='bg-[#F8F4F4] h-[250px] w-[220px] py-5 flex flex-col justify-around items-center rounded-xl shadow-xl'>
-              <h3 className='text-2xl mt-5'>Exercises Saved</h3>
-              <p className='text-lg'>{savedExercises.length}</p>
-            </div>
-            <div className='bg-[#F8F4F4] h-[250px] w-[220px] py-5 flex flex-col justify-around items-center rounded-xl shadow-xl'>
-              <h3 className='text-2xl mt-5'>Exercises Saved</h3>
-              <p className='text-lg'>{savedExercises.length}</p>
-            </div> */}
           </div>
         </div>
       </div>

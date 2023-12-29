@@ -40,7 +40,7 @@ const Flash: React.FC<Props> = ({ type, message, setToggle, sendTo }) => {
       <div className='mx-auto'>{message}</div>
       <div className=''>
         <button
-          className='w-5 h-5 bg-tertiary mr-3 rounded-full flex justify-center items-center'
+          className='w-5 h-5 bg-tertiary text-light mr-3 rounded-full flex justify-center items-center'
           onClick={handleClick}>
           X
         </button>

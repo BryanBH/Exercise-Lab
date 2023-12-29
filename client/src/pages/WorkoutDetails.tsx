@@ -87,16 +87,15 @@ const WorkoutDetails: React.FC = () => {
     );
   });
   return (
-    <section className='w-full flex flex-col items-center justify-center'>
+    <section className='w-full h-screen flex flex-col items-center justify-center'>
       {toggleFlash && <Flash {...flashMessage} setToggle={setToggleFlash} />}
-      <div className='w-[350px] h-[400px] md:h-[573px] md:w-[647px] my-5 bg-[#F8F4F4] rounded-[45px] shadow-xl text-center '>
+      <div className='w-[350px] h-[400px] md:h-[573px] md:w-[647px] my-5 bg-dark dark:bg-extraDark text-light rounded-[45px] shadow-xl text-center '>
         <div className='overflow-auto'>
           <h1 className='font-bold leading-7 text-2xl mb-3 py-5'>
             {workout?.workoutTitle}
           </h1>
           <div className='mb-8'>
             <ul className='flex flex-col gap-5 items-center justify-center '>
-              {/* TODO style scrollbar  */}
               {exerciseItems}
             </ul>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useGetUserSavedExercises } from '../hooks';
-import { NewWorkoutCard, WorkoutExerciseItem } from '../components';
-import { WorkoutExercises, savedExercises } from '../types';
+import { Flash, NewWorkoutCard, WorkoutExerciseItem } from '../components';
+import { WorkoutExercises, savedExercises, FlashMessageType } from '../types';
 
 const NewWorkoutPage: React.FC = () => {
   const exercises = useGetUserSavedExercises();
@@ -9,6 +9,11 @@ const NewWorkoutPage: React.FC = () => {
   const [workoutExercises, setworkoutExercises] = useState<WorkoutExercises[]>(
     []
   );
+  const [toggleFlash, settoggleFlash] = useState(false);
+  const [flashMessage, setflashMessage] = useState<FlashMessageType>({
+    message: '',
+    type: 'success',
+  });
 
   const addToWorkout = (
     exercise: savedExercises,
@@ -22,6 +27,7 @@ const NewWorkoutPage: React.FC = () => {
       reps: Reps,
       sets: Sets,
       exerciseId: exercise.exerciseId,
+      _id: exercise._id,
     };
     setworkoutExercises((prevArray) => [...prevArray, newItem]);
   };
@@ -43,13 +49,16 @@ const NewWorkoutPage: React.FC = () => {
   });
 
   return (
-    <section className='h-full bg-tertiary flex justify-center items-center flex-col'>
+    <section className='h-screen flex justify-center items-center flex-col'>
+      {toggleFlash && <Flash {...flashMessage} setToggle={settoggleFlash} />}
       <div className='wrapper h-full w-full grid grid-cols-1 xl:grid-cols-2 place-items-center gap-10 my-5'>
         <NewWorkoutCard
           workoutExercises={workoutExercises}
           deleteFromWorkout={deleteFromWorkout}
+          setFlashMessage={setflashMessage}
+          setToggleFlash={settoggleFlash}
         />
-        <div className='w-[350px] h-[400px] md:h-[573px] md:w-[647px] bg-[#F8F4F4] rounded-[45px] shadow-xl text-center overflow-auto'>
+        <div className='w-[350px] h-[400px] md:h-[573px] md:w-[647px] bg-dark dark:bg-extraDark text-light rounded-[45px] shadow-xl text-center overflow-auto'>
           <h1 className='font-bold leading-7 text-2xl mb-3 py-5'>
             My Saved Exercises
           </h1>

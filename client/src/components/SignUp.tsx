@@ -21,7 +21,7 @@ const SignUp: React.FC = () => {
 
   // Handle form input event changes
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setuser({ ...user, [event.target.name]: event.target.value });
+    setuser({ ...user, [event.target.name]: event.target.value.trim() });
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -61,19 +61,19 @@ const SignUp: React.FC = () => {
     <>
       <button
         type='button'
-        className='py-3 px-4 bg-secondary text-white rounded-lg'>
+        className='py-3 px-4 bg-secondary text-white rounded-lg hover:shadow'>
         <Link to='/login'>Cancel</Link>
       </button>
       <button
         type='submit'
-        className='py-3 px-4 bg-secondary text-white rounded-lg'>
+        className='py-3 px-4 bg-secondary text-white rounded-lg hover:shadow'>
         Create
       </button>
     </>
   );
 
   return (
-    <section className='w-full flex flex-col text-center gap-4'>
+    <section className='w-full h-screen flex flex-col text-center gap-4'>
       {flashToggle && (
         <Flash
           message={apiMessage.message}
@@ -83,7 +83,7 @@ const SignUp: React.FC = () => {
         />
       )}
       <div className='h-full flex flex-col justify-center items-center text-center  '>
-        <div className='form-wrapper bg-tertiary p-3 my-5 rounded-xl shadow-xl w-[316px] h-[446px] md:w-[455px] md:h-[500px] '>
+        <div className='form-wrapper bg-tertiary text-light p-3 my-5 rounded-xl shadow-xl w-[350px] md:w-[455px] md:h-[520px] '>
           <h1 className='text-3xl my-3 '>Sign Up </h1>
           <form
             action=''
@@ -100,10 +100,17 @@ const SignUp: React.FC = () => {
                 id='username'
                 name='username'
                 autoComplete='username'
-                className='rounded-sm px-2'
+                className='shadow border rounded px-2 focus:outline-none focus:shadow-outline text-dark'
+                pattern='/^[0-9A-Za-z]{6,16}$/'
                 value={user.username}
                 onChange={handleChange}
               />
+              <p className='w-full text-xs text-start pt-1'>
+                <span className='font-light text-extraDark'>
+                  Username contain only letters and numbers, and it must be
+                  between 6 and 16 characters long.
+                </span>
+              </p>
             </div>
             <div className='input-group flex flex-col w-4/5'>
               <label
@@ -116,7 +123,7 @@ const SignUp: React.FC = () => {
                 id='email'
                 name='email'
                 autoComplete='email'
-                className='rounded-sm px-2'
+                className='shadow border rounded px-2 focus:outline-none focus:shadow-outline text-dark'
                 value={user.email}
                 onChange={handleChange}
               />
@@ -132,12 +139,29 @@ const SignUp: React.FC = () => {
                 id='password'
                 name='password'
                 autoComplete='password'
-                className='rounded-sm px-2'
+                className='shadow border rounded px-2 focus:outline-none focus:shadow-outline text-dark'
+                pattern='^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+                '
                 value={user.password}
                 onChange={handleChange}
               />
+              <p className='w-full text-xs text-start py-2'>
+                <span className='font-light'>
+                  <ul className='text-extraDark'>
+                    <li>
+                      At least one alphabetic character (uppercase or
+                      lowercase).
+                    </li>
+                    <li>Atleast one digit.</li>
+                    <li>
+                      At least one special character from the set @$!%*?&.
+                    </li>
+                    <li>Minimum length of 8 characters.</li>
+                  </ul>
+                </span>
+              </p>
             </div>
-            <div className='w-full my-3 flex gap-3 justify-evenly'>
+            <div className='w-full my-3 flex gap-3 justify-evenly '>
               {buttonLayout}
             </div>
           </form>

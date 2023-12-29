@@ -29,7 +29,10 @@ const Login: React.FC = () => {
     sendTo: '',
   });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setuserInfo({ ...userInfo, [event.target.name]: event.target.value });
+    setuserInfo({
+      ...userInfo,
+      [event.target.name]: event.target.value.trim(),
+    });
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -41,6 +44,7 @@ const Login: React.FC = () => {
       // set token in cookies which expires in two days
       Cookies.set('accessToken', data.accessToken, { expires: 2 });
       navigate('/profile');
+      window.location.reload();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const { message } = error.response.data;
@@ -50,7 +54,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <section className='w-full flex flex-col text-center gap-4'>
+    <section className='w-full h-screen flex flex-col text-center gap-4'>
       {flashToggle && (
         <Flash
           message={apiMessage.message}
@@ -60,7 +64,7 @@ const Login: React.FC = () => {
         />
       )}
       <div className='h-full flex flex-col justify-center items-center text-center  '>
-        <div className='form-wrapper bg-tertiary p-3 my-5 rounded-xl shadow-xl w-[316px] h-[400px] md:w-[455px] md:h-[400px] '>
+        <div className='form-wrapper bg-tertiary p-3 my-5 rounded-xl shadow-xl w-[316px] h-[400px] md:w-[455px] md:h-[400px] text-light'>
           <h1 className='text-3xl my-3'>Login</h1>
           <form
             action=''
@@ -77,7 +81,7 @@ const Login: React.FC = () => {
                 id='username'
                 name='username'
                 autoComplete='username'
-                className='rounded-sm px-2'
+                className='rounded-sm px-2 text-dark'
                 value={userInfo.username}
                 onChange={handleChange}
               />
@@ -93,7 +97,7 @@ const Login: React.FC = () => {
                 id='password'
                 name='password'
                 autoComplete='password'
-                className='rounded-sm px-2'
+                className='rounded-sm px-2 text-dark'
                 value={userInfo.password}
                 onChange={handleChange}
               />

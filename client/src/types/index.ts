@@ -4,7 +4,6 @@ export interface ExersicesType {
   totalPages: number;
   muscleGroup: muscleResults[];
 }
-
 export interface muscleResults {
   name: string;
   force: string;
@@ -32,6 +31,11 @@ export interface ExerciseInformation {
   category: string;
   images: string[];
   id: string;
+}
+export interface WorkoutVideoResponse {
+  videoId: string;
+  title: string;
+  thumbnail: string;
 }
 
 // ***************** User info ***************

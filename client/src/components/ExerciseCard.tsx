@@ -5,7 +5,7 @@ import { ExerciseInformation } from '../types';
 
 const ExerciseCard: React.FC<ExerciseInformation> = (exercise) => {
   return (
-    <div className='flex flex-col justify-center items-center mb-3 p-2 border-2 rounded-xl max-w-md cursor-pointer shadow-lg hover:shadow-2xl'>
+    <div className='flex flex-col justify-center items-center mb-3 p-2 rounded-xl max-w-md cursor-pointer shadow-lg hover:shadow-2xl bg-dark dark:bg-light'>
       <Link to={`/exercises/${exercise._id}`}>
         <div className='relative my-2 px-2 flex items-center justify-center'>
           <img
@@ -20,7 +20,7 @@ const ExerciseCard: React.FC<ExerciseInformation> = (exercise) => {
           />
         </div>
         <div className='flex justify-center items-center py-2'>
-          <h1 className='text-2xl text-center font-bold'>{exercise.name}</h1>
+          <h1 className='text-2xl text-center font-bold text-light dark:text-dark'>{exercise.name}</h1>
         </div>
       </Link>
     </div>

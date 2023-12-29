@@ -15,19 +15,19 @@ const LandingPage: React.FC = () => {
             className='h-full relative rounded-[10%] shadow-2xl'
           />
         </div>
-        <p>
+        <p className='text-dark dark:text-light'>
           <small>
             <i>
               Photo by{' '}
               <a
                 href='https://unsplash.com/@hipcravo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
-                className='hover:text-[#52598F]'>
+                className='hover:text-secondary'>
                 Sushil Ghimire
               </a>{' '}
               on{' '}
               <a
                 href='https://unsplash.com/photos/5UbIqV58CW8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
-                className='hover:text-[#52598F]'>
+                className='hover:text-secondary'>
                 Unsplash
               </a>
             </i>

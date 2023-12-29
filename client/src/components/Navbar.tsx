@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
           onClick={() => {
             Cookies.remove('accessToken');
             navigate('/');
+            window.location.reload();
           }}>
           Sign Out
         </button>
@@ -67,7 +68,7 @@ const Navbar: React.FC = () => {
   );
   return (
     <nav
-      className={`${styles.paddingX} bg-primary w-full flex items-center py-4 sticky top-0 z-10`}>
+      className={`${styles.paddingX} w-full flex items-center py-4 sticky top-0 z-10 bg-dark text-light dark:bg-extraDark`}>
       <div className='w-full flex justify-start items-center max-w-7xl mx-auto'>
         <NavLink to='/' className='flex items-center gap-10 me-5'>
           <p>Exercise Lab</p>

@@ -50,7 +50,7 @@ const UserExercises: React.FC = () => {
   const exerciseItems = exercises?.map((exercise) => {
     return (
       <li
-        className='bg-secondary w-[90%] h-10 flex items-center justify-evenly rounded-lg text-white'
+        className='bg-tertiary w-[90%] h-10 flex items-center justify-evenly rounded-lg text-white'
         key={exercise.name}>
         <h4 className='mx-auto'>
           <Link to={`/exercises/${exercise.exerciseId}`}>{exercise.name}</Link>
@@ -65,13 +65,12 @@ const UserExercises: React.FC = () => {
   });
 
   return (
-    <div className='w-[350px] h-[400px] md:h-[573px] md:w-[647px] bg-[#F8F4F4] rounded-[45px] shadow-xl text-center overflow-auto'>
+    <div className='w-[350px] h-[400px] md:h-[573px] md:w-[647px] bg-dark dark:bg-extraDark text-light rounded-[45px] shadow-xl text-center overflow-auto'>
       <h1 className='font-bold leading-7 text-2xl mb-3 py-5'>
         My Saved Exercises
       </h1>
       <div className='mb-8'>
         <ul className='flex flex-col gap-5 items-center justify-center '>
-          {/* TODO style scrollbar  */}
           {exerciseItems}
         </ul>
       </div>

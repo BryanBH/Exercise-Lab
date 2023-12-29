@@ -66,12 +66,12 @@ const ExercisePage: React.FC = () => {
 
   return (
     <div className='w-full flex flex-col'>
-      <div className='flex justify-center'>
+      <div className='flex justify-center mt-5 text-dark dark:text-light'>
         <form>
           <label> Select muscle group: </label>
           <select
             id='muscles'
-            className='mx-2 p-2 w-lg cursor-pointer hover:shadow-lg form-select'
+            className='rounded mx-2 p-2 w-lg cursor-pointer hover:shadow-lg form-select bg-light dark:bg-secondary'
             onChange={handleMuscleChange}>
             {muscleGroups.map((muscle) => {
               return <option key={muscle} value={muscle} label={muscle} />;

@@ -7,11 +7,11 @@ const useGetAccessToken = (navigateTo?: string) => {
   const [token, setToken] = useState(Cookies.get('accessToken'));
 
   useEffect(() => {
-    const accessToken = Cookies.get('accessToken');
-    if (!accessToken && navigateTo) {
+    // const accessToken = Cookies.get('accessToken');
+    if (!token && navigateTo) {
       navigate(navigateTo);
     } else {
-      setToken(accessToken);
+      setToken(Cookies.get('accessToken'));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
