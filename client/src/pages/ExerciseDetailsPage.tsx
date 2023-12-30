@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ExerciseInformation } from '../types';
 import { useParams } from 'react-router-dom';
-import { ExerciseDetails, WorkoutVideos } from '../components';
+import { ExerciseDetails } from '../components';
 const ExerciseDetailsPage: React.FC = () => {
   const { exerciseId } = useParams();
   const [exercise, setexercise] = useState<ExerciseInformation>({
