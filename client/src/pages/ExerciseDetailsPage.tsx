@@ -36,7 +36,7 @@ const ExerciseDetailsPage: React.FC = () => {
   return (
     <>
       <ExerciseDetails {...exercise} />
-      <WorkoutVideos exerciseName={exercise.name} />
+      {/* <WorkoutVideos exerciseName={exercise.name} /> */}
     </>
   );
 };

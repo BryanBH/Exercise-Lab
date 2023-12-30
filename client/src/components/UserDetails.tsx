@@ -9,22 +9,23 @@ const UserDetails: React.FC<UserProfileInformation> = ({
   savedWorkouts,
   profileImage,
 }) => {
+  console.log(profileImage);
   return (
     <section className='w-full relative'>
       <div className='profile-details flex flex-col lg:flex-row bg-dark dark:bg-extraDark w-[90%] mx-auto rounded-lg shadow-2xl mt-5 pb-5'>
         <div className='w-full lg:w-1/2 flex flex-col justify-center items-center mb-5 text-light'>
           <div className='relative'>
-            {profileImage ? (
-              <img
-                src={profileImage.url}
-                alt='profile image'
-                className='rounded-[65px] w-[300px] h-[295px] md:w-[480px] md:h-[550px] mb-10 p-5 object-cover'
-              />
-            ) : (
+            {Object.keys(profileImage).length === 0 ? (
               <img
                 src={skeletonProfileIcon}
                 alt='profile image'
                 className='rounded-[65px] w-[300px] h-[295px] md:w-[480px] md:h-[450px] mb-10 p-5'
+              />
+            ) : (
+              <img
+                src={profileImage.url}
+                alt='profile image'
+                className='rounded-[65px] w-[300px] h-[295px] md:w-[480px] md:h-[550px] mb-10 p-5 object-cover'
               />
             )}
             <div className='flex justify-center items-center bg-secondary rounded-full absolute w-12 h-12 bottom-10 right-3 cursor-pointer'>

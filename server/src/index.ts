@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
+import path from 'path';
 import cors from 'cors';
-import "dotenv/config"
+import 'dotenv/config';
 const app = express();
 const port = process.env.PORT || 4500;
 const dbURL = process.env.DB_URL || 'mongodb://localhost:27017/exercise-lab';
-
 import { exerciseRouter } from './routes/exerciseRoutes';
 import { authRouter } from './routes/auth';
 
@@ -16,11 +16,17 @@ app.listen(port, () => {
 
 app.use(express.json());
 app.use(cors());
+// Have Node serve the files for the built React app
+app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 // connect to mongoDB database
 mongoose
   .connect(dbURL)
-  .then(() => console.log(`connected to server ${dbURL}`))
+  .then(() => {
+    if (process.env.DB_URL === dbURL)
+      console.log(`connected to server mongoose server`);
+    else console.log(`connected to server ${dbURL}`);
+  })
   .catch((err) => console.log(err));
 
 app.get('/', (req: Request, res: Response) => {

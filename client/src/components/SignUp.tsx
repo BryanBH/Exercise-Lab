@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FlashMessageType } from '../types';
 import axios from 'axios';
 import Flash from './Flash';
+import { showIcon, hideIcon } from '../assets';
 
 const SignUp: React.FC = () => {
   const [user, setuser] = useState<UserInfo>({
@@ -12,33 +13,53 @@ const SignUp: React.FC = () => {
     password: '',
   });
   const [loading, setloading] = useState(false);
+  const [showPassword, setshowPassword] = useState(false);
   const [flashToggle, setFlashToggle] = useState(false);
   const [apiMessage, setApiMessage] = useState<FlashMessageType>({
     message: '',
     type: 'success',
     sendTo: null,
   });
-
+  const usernameRegex = /^[0-9A-Za-z]{6,16}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   // Handle form input event changes
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setuser({ ...user, [event.target.name]: event.target.value.trim() });
+    const { name, value } = event.target;
+    // Update the username field with regex validation
+    if (name === 'username' && usernameRegex.test(value)) {
+      setuser({ ...user, [name]: value.trim() });
+    }
+    // Update the password field with regex validation
+    else if (name === 'password' && passwordRegex.test(value)) {
+      setuser({ ...user, [name]: value.trim() });
+    }
+    // For other fields (e.g., email), update without regex validation
+    else {
+      setuser({ ...user, [name]: value.trim() });
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setloading(true);
     try {
-      const { data } = await axios.post('http://localhost:4500/auth/signup', {
-        ...user,
-      });
-      setApiMessage({
-        message: data.message,
-        type: 'success',
-        sendTo: '/login',
-      });
-      setloading(false);
-      setuser({ username: '', email: '', password: '' });
-      setFlashToggle(true);
+      if (
+        usernameRegex.test(user.username) &&
+        passwordRegex.test(user.password)
+      ) {
+        const { data } = await axios.post('http://localhost:4500/auth/signup', {
+          ...user,
+        });
+        setApiMessage({
+          message: data.message,
+          type: 'success',
+          sendTo: '/login',
+        });
+        setloading(false);
+        setuser({ username: '', email: '', password: '' });
+        setFlashToggle(true);
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const { message } = error.response.data;
@@ -101,7 +122,6 @@ const SignUp: React.FC = () => {
                 name='username'
                 autoComplete='username'
                 className='shadow border rounded px-2 focus:outline-none focus:shadow-outline text-dark'
-                pattern='/^[0-9A-Za-z]{6,16}$/'
                 value={user.username}
                 onChange={handleChange}
               />
@@ -134,32 +154,38 @@ const SignUp: React.FC = () => {
                 className='block text-lg font-medium leading-6 text-start mb-3'>
                 Password
               </label>
-              <input
-                type='password'
-                id='password'
-                name='password'
-                autoComplete='password'
-                className='shadow border rounded px-2 focus:outline-none focus:shadow-outline text-dark'
-                pattern='^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
-                '
-                value={user.password}
-                onChange={handleChange}
-              />
-              <p className='w-full text-xs text-start py-2'>
-                <span className='font-light'>
-                  <ul className='text-extraDark'>
-                    <li>
-                      At least one alphabetic character (uppercase or
-                      lowercase).
-                    </li>
-                    <li>Atleast one digit.</li>
-                    <li>
-                      At least one special character from the set @$!%*?&.
-                    </li>
-                    <li>Minimum length of 8 characters.</li>
-                  </ul>
-                </span>
-              </p>
+              <div className='relative '>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id='password'
+                  name='password'
+                  autoComplete='password'
+                  className=' w-full shadow border rounded px-2 focus:outline-none focus:shadow-outline text-dark'
+                  value={user.password}
+                  onChange={handleChange}
+                />
+                <button
+                  className=' grid place-items-center absolute top-0 end-0 w-8 h-full rounded focus:outline-none bg-secondary'
+                  type='button'
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setshowPassword(!showPassword);
+                  }}>
+                  <img
+                    className='h-[20px]'
+                    src={!showPassword ? showIcon : hideIcon}
+                    alt=''
+                  />
+                </button>
+              </div>
+              <ul className='w-full text-xs text-start py-2 font-light text-extraDark'>
+                <li>
+                  At least one alphabetic character (uppercase or lowercase).
+                </li>
+                <li>Atleast one digit.</li>
+                <li>At least one special character from the set @$!%*?&.</li>
+                <li>Length of 8-25 characters.</li>
+              </ul>
             </div>
             <div className='w-full my-3 flex gap-3 justify-evenly '>
               {buttonLayout}

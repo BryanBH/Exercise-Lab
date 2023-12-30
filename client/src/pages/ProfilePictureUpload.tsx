@@ -43,7 +43,6 @@ const ProfilePictureUpload: React.FC = () => {
             },
           }
         );
-        console.log(data);
         setToggleFlash(true);
         setflashMessage({
           type: 'success',
@@ -61,7 +60,7 @@ const ProfilePictureUpload: React.FC = () => {
 
   return (
     <div
-      className='fixed top-0 right-0 left-0 bottom-0 z-50 flex w-full h-[100%] bg-gray-300'
+      className='fixed top-0 right-0 left-0 bottom-0 z-50 flex w-full h-[100%] bg-light dark:bg-dark text-light'
       onClick={() => navigate('/profile')}>
       {toggleFlash && (
         <div className='fixed top-0 right-0 left-0 bottom-0 z-100'>
@@ -69,14 +68,14 @@ const ProfilePictureUpload: React.FC = () => {
         </div>
       )}
       <section
-        className=' relative modal m-auto w-[90%] max-w-[40rem] bg-white p-5 rounded-lg flex justify-center items-center flex-col sm:flex-row flex-wrap'
+        className=' relative modal m-auto w-[90%] max-w-[40rem] p-5 rounded-lg flex justify-center items-center flex-col sm:flex-row flex-wrap  bg-dark dark:bg-extraDark'
         onClick={(e) => {
           e.stopPropagation();
         }}>
         <form encType='multipart/form-data' onSubmit={submitImage}>
           <div className='w-full text-center font-bold mb-3'>
             <label
-              className='block mb-2 text-xl font-medium text-gray-900'
+              className='block mb-2 text-xl font-medium'
               htmlFor='file_input'>
               Upload file
             </label>
@@ -93,13 +92,13 @@ const ProfilePictureUpload: React.FC = () => {
             />
             <button
               type='submit'
-              className='bg-secondary text-white p-1 rounded-lg'>
+              className='bg-tertiary text-white p-1 rounded-lg'>
               Upload
             </button>
           </div>
         </form>
         <button
-          className='bg-secondary w-8 h-8 text-white rounded-full absolute top-0 right-0 '
+          className='bg-tertiary w-8 h-8 text-white rounded-full absolute top-0 right-0 '
           onClick={() => navigate('/profile')}>
           X
         </button>
