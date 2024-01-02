@@ -54,7 +54,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <section className='w-full h-screen flex flex-col text-center gap-4'>
+    <section className='w-full h-[calc(100vh-59px)] flex flex-col text-center gap-4'>
       {flashToggle && (
         <Flash
           message={apiMessage.message}

@@ -49,7 +49,7 @@ const NewWorkoutPage: React.FC = () => {
   });
 
   return (
-    <section className='h-screen flex justify-center items-center flex-col'>
+    <section className='h-[calc(100vh-59px)] flex justify-center items-center flex-col'>
       {toggleFlash && <Flash {...flashMessage} setToggle={settoggleFlash} />}
       <div className='wrapper h-full w-full grid grid-cols-1 xl:grid-cols-2 place-items-center gap-10 my-5'>
         <NewWorkoutCard

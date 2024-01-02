@@ -48,7 +48,7 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
       )}
       <div className='h-full flex justify-center items-center flex-col md:flex-row  my-10'>
         <div className='relative md:w-3/5 order-last md:order-first mb-3 flex items-center justify-center'>
-          <div className='px-2'>
+          <div className=''>
             <img
               src={`${exercise.images[0]}`}
               alt='exercise image 1'
