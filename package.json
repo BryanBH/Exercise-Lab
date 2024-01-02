@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "cd client && npm run build",
-    "postinstall": "cd server && tsc",
+    "heroku-postbuild":"cd client && npm install && npm run build && cd server && npm install && tsc ",
     "start": "cd server && npm run start"
   },
   "engines": {
