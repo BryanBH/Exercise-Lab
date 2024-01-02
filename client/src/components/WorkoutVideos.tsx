@@ -13,7 +13,7 @@ const WorkoutVideos: React.FC<WorkoutVideosProps> = ({ exerciseName }) => {
     const getExerciseVideos = async () => {
       try {
         const { data } = await axios.get(
-          'http://localhost:4500/exercises/getVideos',
+          `${import.meta.env.VITE_APP_API_URL}/exercises/getVideos`,
           { params: { exerciseName } }
         );
         setvideos(data);
@@ -45,9 +45,6 @@ const WorkoutVideos: React.FC<WorkoutVideosProps> = ({ exerciseName }) => {
             {exerciseName} Videos
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-3 place-items-center mb-5 gap-5'>
-            {/* <div className='bg-gray-500 w-[350px] h-[350px] text-center'>test</div>
-      <div className='bg-gray-500 w-[350px] h-[350px] text-center'>test</div>
-      <div className='bg-gray-500 w-[350px] h-[350px] text-center'>test</div> */}
             {items}
           </div>
         </div>

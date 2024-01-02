@@ -20,7 +20,7 @@ const ProfilePage: React.FC = () => {
       if (token) {
         try {
           const { data } = await axios.get(
-            'http://localhost:4500/auth/profile',
+            `${import.meta.env.VITE_APP_API_URL}/auth/profile`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }

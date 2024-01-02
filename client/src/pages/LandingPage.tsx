@@ -3,7 +3,7 @@ import { HeroText } from '../components';
 import { heroImg } from '../assets';
 
 const LandingPage: React.FC = () => {
-	console.log(import.meta.env.MODE)
+	console.log(import.meta.env.VITE_APP_API_URL)
 	return (
 		<section
 			className={`w-full flex grow sm:flex-row flex-col justify-evenly items-center`}>

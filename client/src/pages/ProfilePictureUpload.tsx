@@ -34,7 +34,7 @@ const ProfilePictureUpload: React.FC = () => {
         // append image file to form data
         formData.append('image', imageFile);
         const { data } = await axios.post(
-          'http://localhost:4500/auth/uploadProfilePic',
+          `${import.meta.env.VITE_APP_API_URL}/auth/uploadProfilePic`,
           formData,
           {
             headers: {

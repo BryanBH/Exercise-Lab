@@ -23,7 +23,7 @@ const ExerciseDetailsPage: React.FC = () => {
 	useEffect(() => {
 		const getExercise = async () => {
 			const { data } = await axios.get(
-				'http://localhost:4500/exercises/getExerciseById',
+				`${import.meta.env.VITE_APP_API_URL}/exercises/getExerciseById`,
 				{
 					params: { exerciseId },
 				}

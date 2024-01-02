@@ -9,7 +9,6 @@ const UserDetails: React.FC<UserProfileInformation> = ({
   savedWorkouts,
   profileImage,
 }) => {
-  console.log(profileImage);
   return (
     <section className='w-full relative'>
       <div className='profile-details flex flex-col lg:flex-row bg-dark dark:bg-extraDark w-[90%] mx-auto rounded-lg shadow-2xl mt-5 pb-5'>

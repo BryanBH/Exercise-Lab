@@ -16,14 +16,14 @@ const UserExercises: React.FC = () => {
     if (token) {
       try {
         await axios.post(
-          'http://localhost:4500/auth/deleteSavedExercise',
+          `${import.meta.env.VITE_APP_API_URL}/auth/deleteSavedExercise`,
           { id },
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
         const { data } = await axios.get(
-          'http://localhost:4500/auth/getSavedExercises',
+          `${import.meta.env.VITE_APP_API_URL}/auth/getSavedExercises`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -38,7 +38,7 @@ const UserExercises: React.FC = () => {
   useEffect(() => {
     const getSavedExercises = async () => {
       const { data } = await axios.get(
-        'http://localhost:4500/auth/getSavedExercises',
+        `${import.meta.env.VITE_APP_API_URL}/auth/getSavedExercises`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

@@ -15,12 +15,12 @@ const UserWorkouts: React.FC = () => {
     workoutId: string | mongoose.Schema.Types.ObjectId
   ) => {
     await axios.post(
-      'http://localhost:4500/auth/deleteSavedWorkout',
+      `${import.meta.env.VITE_APP_API_URL}/auth/deleteSavedWorkout`,
       { workoutId },
       { headers: { Authorization: `Bearer ${token}` } }
     );
     const { data } = await axios.get(
-      'http://localhost:4500/auth/getSavedWorkouts',
+      `${import.meta.env.VITE_APP_API_URL}/auth/getSavedWorkouts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -32,7 +32,7 @@ const UserWorkouts: React.FC = () => {
     const getSavedWorkouts = async () => {
       try {
         const { data } = await axios.get(
-          'http://localhost:4500/auth/getSavedWorkouts',
+          `${import.meta.env.VITE_APP_API_URL}/auth/getSavedWorkouts`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

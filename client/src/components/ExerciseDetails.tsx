@@ -17,11 +17,10 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
     sendTo: null,
   });
   const handleSaveExercise = async () => {
-    console.log(exercise._id);
     if (token) {
       try {
         const { data } = await axios.post(
-          'http://localhost:4500/auth/saveExercise',
+          `${import.meta.env.VITE_APP_API_URL}/auth/saveExercise`,
           {
             exerciseId: exercise._id,
             exerciseName: exercise.name,
@@ -41,12 +40,14 @@ const ExerciseDetails: React.FC<ExerciseInformation> = (exercise) => {
       navigate('/login');
     }
   };
+
+
   return (
     <>
       {flashToggle && (
         <Flash {...flashInformation} setToggle={setFlashToggle} />
       )}
-      <div className='h-full flex justify-center items-center flex-col md:flex-row  my-10'>
+      <div className='h-[calc(100vh-109px)] flex justify-center items-center flex-col md:flex-row  my-10'>
         <div className='relative md:w-3/5 order-last md:order-first mb-3 flex items-center justify-center'>
           <div className=''>
             <img

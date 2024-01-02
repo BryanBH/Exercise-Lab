@@ -28,7 +28,7 @@ const NewWorkoutCard: React.FC<NewWorkOutProps> = ({
         (execise) => execise.exerciseId !== ''
       );
       const { data } = await axios.post(
-        'http://localhost:4500/auth/saveNewWorkout',
+        `${import.meta.env.VITE_APP_API_URL}/auth/saveNewWorkout`,
         {
           workoutTitle: workoutTitle,
           workout: workoutToSubmit,

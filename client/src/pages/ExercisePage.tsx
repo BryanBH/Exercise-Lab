@@ -16,7 +16,6 @@ const ExercisePage: React.FC = () => {
   };
 
   const handlePageChange = (pageChangeValue: number) => {
-    console.log(`change value ${pageChangeValue}, total pages: ${totalpages}`);
     if (pageChangeValue === 1) {
       if (page < totalpages) {
         setpage(page + 1);
@@ -42,7 +41,7 @@ const ExercisePage: React.FC = () => {
     const getExercises = async () => {
       setloading(true);
       const { data } = await axios.get(
-        'http://localhost:4500/exercises/getExerciseByMuscleGroup',
+        `${import.meta.env.VITE_APP_API_URL}/exercises/getExerciseByMuscleGroup`,
         {
           params: { muscle, limit: 10, page },
         }

@@ -38,7 +38,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:4500/auth/signin', {
+      const { data } = await axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/signin`, {
         ...userInfo,
       });
       // set token in cookies which expires in two days

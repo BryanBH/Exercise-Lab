@@ -48,7 +48,7 @@ const SignUp: React.FC = () => {
         usernameRegex.test(user.username) &&
         passwordRegex.test(user.password)
       ) {
-        const { data } = await axios.post('http://localhost:4500/auth/signup', {
+        const { data } = await axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/signup`, {
           ...user,
         });
         setApiMessage({
