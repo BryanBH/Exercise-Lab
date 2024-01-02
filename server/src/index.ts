@@ -17,7 +17,7 @@ app.listen(port, () => {
 app.use(express.json());
 app.use(cors());
 // Have Node serve the files for the built React app
-app.use(express.static(path.resolve(__dirname, '../client/dist')));
+app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 
 // connect to mongoDB database
 mongoose
@@ -29,17 +29,15 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-app.get('/', (req: Request, res: Response) => {
-  const { muscle } = req.query;
-  console.log(muscle);
-  res.send([]);
-});
-
 /**
  * Route Handling
  */
 app.use('/exercises', exerciseRouter);
 app.use('/auth', authRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
+});
 
 /**
  * Dev route to clean DB

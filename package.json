@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "cd client && npm run build",
-    "postinstall": "cd client && tsc && vite build",
+    "postinstall": "cd client && tsc",
     "start": "cd server && npm run start"
   },
   "engines": {
