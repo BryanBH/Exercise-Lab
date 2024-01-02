@@ -70,7 +70,7 @@ const ExercisePage: React.FC = () => {
           <label> Select muscle group: </label>
           <select
             id='muscles'
-            className='rounded mx-2 p-2 w-lg cursor-pointer hover:shadow-lg form-select bg-dark dark:bg-secondary'
+            className='rounded mx-2 p-2 w-lg cursor-pointer hover:shadow-lg form-select bg-dark dark:bg-secondary text-light'
             onChange={handleMuscleChange}>
             {muscleGroups.map((muscle) => {
               return <option key={muscle} value={muscle} label={muscle} />;
