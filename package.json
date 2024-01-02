@@ -6,6 +6,9 @@
     "build": "cd client && tsc && npx vite build",
     "start": "cd server && npm install && npm run start"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
